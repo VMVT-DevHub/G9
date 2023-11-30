@@ -17,16 +17,13 @@ jobs:
         with:
           dotnet-version: '7.0.x'
       - name: Build
-        run: dotnet publish -c Debug -r rhel.9-x64 -p:PublishSingleFile=true --self-contained false -o ./release
-
-      - name: Save output directory as an environment variable
-        run: echo "OUTPUT_DIR=./release" >> $GITHUB_ENV
+        run: dotnet publish -c Debug -r rhel.9-x64 -p:PublishSingleFile=true --self-contained false
         
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
            name: published-files
-           path: ${{ env.OUTPUT_DIR }}
+           path: ./bin/Debug/net7.0/rhel.9-x64/publish/
 
 #      - name: release
 #        uses: actions/create-release@v1
