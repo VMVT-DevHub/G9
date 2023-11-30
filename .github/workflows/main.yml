@@ -23,15 +23,15 @@ jobs:
         with:
           name: G9_${{github.run_number}}
           path: /home/runner/work/GitRelease/release
-          retention-days: 5
+          retention-days: 30
 
-      - name: release
-        uses: actions/create-release@v1
-        id: create_release
-        with:
-           draft: false
-           prerelease: false
-           release_name: G9_${{github.run_number}}
-           tag_name: 'test'
-        env:
-           GITHUB_TOKEN: ${{ secrets.release_token }}
+#      - name: release
+#        uses: actions/create-release@v1
+#        id: create_release
+#        with:
+#           draft: false
+#           prerelease: false
+#           release_name: G9_${{github.run_number}}
+#           tag_name: test-${{github.run_number}}
+#        env:
+#           GITHUB_TOKEN: ${{ secrets.release_token }}
