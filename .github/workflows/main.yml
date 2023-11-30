@@ -22,7 +22,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: G9_${{github.run_number}}
-          path: /home/runner/work/GitRelease/release
+#          path: /home/runner/work/GitRelease/release
           retention-days: 30
 
 #      - name: release
