@@ -17,11 +17,11 @@ jobs:
         with:
           dotnet-version: '7.0.x'
       - name: Build
-        run: dotnet publish -c Debug -o /home/runner/work/GitRelease/release -r rhel.9-x64 -p:PublishSingleFile=true --self-contained false
+        run: dotnet publish -c Debug -r rhel.9-x64 -p:PublishSingleFile=true --self-contained false
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: gitrelease_${{github.run_number}}
+          name: G9_${{github.run_number}}
           path: /home/runner/work/GitRelease/release
           retention-days: 5
 
