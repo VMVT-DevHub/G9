@@ -401,3 +401,4 @@ FodyWeavers.xsd
 
 
 .github/
+.github/workflows/main.yml
