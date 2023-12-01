@@ -1,7 +1,7 @@
 using App.API;
 var app = Startup.Build(args);
 
-app.MapGet("/",()=>new G9.Models.Rodiklis()).ExcludeFromDescription();
+app.MapGet("/",()=>Auth.Get).ExcludeFromDescription();
 
 app.MapGet("/auth/login",Auth.Login).Swagger("", "Vartotojas peradresuojamas į VIISP prisijungimą").Produces(302);
 app.MapGet("/auth/logout",Auth.Logout).Swagger("", "Vartotojo atsijungimas nuo sistemos.").Produces(302);
