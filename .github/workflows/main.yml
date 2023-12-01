@@ -22,7 +22,7 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-           name: published-files
+           name: publish-test
            path: ./bin/Debug/net7.0/rhel.9-x64/publish/
 
 #      - name: release
