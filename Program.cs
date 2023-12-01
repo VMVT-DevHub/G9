@@ -1,7 +1,7 @@
 using App.API;
 var app = Startup.Build(args);
 
-app.MapGet("/",()=>Auth.Get).ExcludeFromDescription();
+app.MapGet("/",()=>"").ExcludeFromDescription();
 
 app.MapGet("/auth/login",Auth.Login).Swagger("", "Vartotojas peradresuojamas į VIISP prisijungimą").Produces(302);
 app.MapGet("/auth/logout",Auth.Logout).Swagger("", "Vartotojo atsijungimas nuo sistemos.").Produces(302);
@@ -15,7 +15,7 @@ app.MapDelete("/api/deleg/{gvts}",Delegavimas.Del).Swagger("","Trinti deleguojam
 
 // Deklaracijos
 app.MapGet("/api/deklar/{gvts}/{metai}",Deklaracija.Get).Swagger("","Gaunamas deklaruojamų metų objektas").Response<G9.Models.Deklaracija>(200,401,403,404).RequireRole();
-app.MapPost("/api/deklar/{gvts}/{metai}",Deklaracija.Set).Swagger(	"","Daklaracijos duomenų įvedimas").Response<G9.Models.Deklaracija>(200,422,401,403,404).RequireRole();
+app.MapPost("/api/deklar/{gvts}/{metai}",Deklaracija.Set).Swagger("","Daklaracijos duomenų įvedimas").Response<G9.Models.Deklaracija>(200,422,401,403,404).RequireRole();
 
 // Deklaravimas
 app.MapGet("/api/deklaruoti/{deklaracija}",Deklaravimas.Valid).Swagger("","Tikrinti ar galima delkaruoti").Response<G9.Models.Deklaravimas>(200,422,401,403,404).RequireRole();
