@@ -11,7 +11,7 @@ app.MapGet("/api/user",Auth.Get).Swagger("","Informacija apie prisijungusį vart
 // Teisių delegavimas
 app.MapGet("/api/deleg",Delegavimas.Get).Swagger("","Gauti visas prisijungusio asmens administruojamų GVTS sąrašą.").Response<G9.Models.Delegavimas>(200,422,401,403,404).RequireRole();
 app.MapPost("/api/deleg/{gvts}",Delegavimas.Set).Swagger("","Pridėti deleguojamą asmenį").Produces(204).Errors(422,401,403,404).RequireRole();
-app.MapDelete("/api/deleg/{gvts}",Delegavimas.Del).Swagger("","Trinti deleguojamą asmenį").Produces(204).Errors(422,401,403,404).RequireRole();
+app.MapDelete("/api/deleg/{gvts}/{user}",Delegavimas.Del).Swagger("","Trinti deleguojamą asmenį").Produces(204).Errors(422,401,403,404).RequireRole();
 
 // Deklaracijos
 app.MapGet("/api/deklar/{gvts}/{metai}",Deklaracija.Get).Swagger("","Gaunamas deklaruojamų metų objektas").Response<G9.Models.Deklaracija>(200,401,403,404).RequireRole();

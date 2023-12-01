@@ -30,6 +30,11 @@ public class Error {
 		if(print) ctx.Response.WriteAsJsonAsync(obj);
 		return obj;
 	}
+	private static T Respond<T>(HttpContext ctx, bool print=false, params string[] str) where T : ErrorB, new() {
+		var err = new T();
+		foreach(var i in str) err.Details.Add(i);
+		return Respond(err,ctx,print);
+	}
 
 	/// <summary>Autorizacijos klaida</summary>
 	public static E401 E401(HttpContext ctx, bool print=false) => Respond(Er401,ctx,print);
@@ -42,14 +47,18 @@ public class Error {
 	private static E404 Er404 { get; } = new();
 
 	/// <summary>Validacijos klaida</summary>
-	public static E422 E422(HttpContext ctx, bool print=false, params string[] str) {
-		var err = new E422();
-		foreach(var i in str) err.Details.Add(i);
-		return Respond(err,ctx,print);
-	}
+	public static E422 E422(HttpContext ctx, bool print=false, params string[] str) => Respond<E422>(ctx,print,str);
+	/// <summary>kritinė klaida</summary>
+	public static E500 E500(HttpContext ctx, bool print=false, params string[] str) => Respond<E500>(ctx,print,str);
 }
 
-
+/// <summary>Klaida su aprašymu</summary>
+public class ErrorB : Error {
+	
+	/// <summary>Klaidos informacija</summary>
+	/// <example>Validacijos informacija</example>
+	public virtual List<string> Details { get; set; } = new();
+}
 
 
 /// <summary>Vartotojo autorizacijos klaida</summary>
@@ -95,7 +104,7 @@ public class E404 : Error {
 }
 
 /// <summary>Vartotojo prieigos klaida</summary>
-public class E422 : Error {
+public class E422 : ErrorB {
 	/// <summary>Klaidos kodas</summary>
 	/// <example>422</example>
 	public override int Code { get; set; } = 422;
@@ -107,6 +116,23 @@ public class E422 : Error {
 	public string Message { get; set; } = "Duomenų validacijos klaida";
 	/// <summary>Klaidos informacija</summary>
 	/// <example>Validacijos informacija</example>
-	public List<string> Details { get; set; } = new();
+	public override List<string> Details { get; set; } = new();
+
+}
+
+/// <summary>Vartotojo prieigos klaida</summary>
+public class E500 : ErrorB {
+	/// <summary>Klaidos kodas</summary>
+	/// <example>500</example>
+	public override int Code { get; set; } = 500;
+	/// <summary>Klaidos statusas</summary>
+	/// <example>Server Error</example>
+	public string Status { get; set; } = "Server Error";
+	/// <summary>Klaidos Žinutė</summary>
+	/// <example>Sistemos klaida</example>
+	public string Message { get; set; } = "Sistemos klaida";
+	/// <summary>Klaidos informacija</summary>
+	/// <example>Validacijos informacija</example>
+	public override List<string> Details { get; set; } = new();
 
 }

@@ -221,7 +221,7 @@ public static class Deklaracija {
 
 /// <summary>Deklaravimo API</summary>
 public static class Deklaravimas {
-	/// <summary>Deklaracijos validacija</summary>
+	/// <summary>Deklaracijos validacija (NEVEIKIA)</summary>
 	/// <param name="ctx"></param>
 	/// <param name="deklaracija">Deklaracijos ID</param>
 	/// <param name="ct"></param><returns></returns>
@@ -231,7 +231,7 @@ public static class Deklaravimas {
 		}
 	}
 
-	/// <summary>Deklaracijos pateikimas</summary>
+	/// <summary>Deklaracijos pateikimas (NEVEIKIA)</summary>
 	/// <param name="ctx"></param><param name="ct"></param><returns></returns>
 	/// <param name="deklaracija">Deklaracijos ID</param>
 	/// <param name="data">Neatitikimų patvirtinimo duomenys</param>
@@ -243,7 +243,7 @@ public static class Deklaravimas {
 		}
 	}
 	
-	/// <summary>Deklaracijos neatitikimų pildymas</summary>
+	/// <summary>Deklaracijos neatitikimų pildymas (NEVEIKIA)</summary>
 	/// <param name="ctx"></param><param name="ct"></param><returns></returns>
 	/// <param name="deklaracija">Deklaracijos ID</param>
 	/// <param name="data">Neatitikimų patvirtinimo duomenys</param>
