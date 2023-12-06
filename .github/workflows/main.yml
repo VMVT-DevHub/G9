@@ -23,6 +23,13 @@ jobs:
         with:
            name: publish-test
            path: ./bin/Debug/net7.0/rhel.9-x64/publish/
+      - name: Trigger deployment
+        run: |
+          api_url=$API_URL
+          response=$(curl -s $api_url)
+          echo "Response: $response"
+        env:
+          API_URL: ${{ secrets.G9_TRIGGER }}
 
 #      - name: release
 #        uses: actions/create-release@v1
