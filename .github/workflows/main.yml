@@ -1,4 +1,4 @@
-name: Test release
+ename: Test release
 on:
   push:
     branches:
@@ -29,7 +29,7 @@ jobs:
           response=$(curl -s $api_url)
           echo "Response: $response"
         env:
-          API_URL: ${{ test.G9_TRIGGER }}
+          API_URL: ${{ secrets.G9_TRIGGER }}
 
           
 #      - name: release
