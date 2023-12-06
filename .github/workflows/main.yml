@@ -1,4 +1,4 @@
-ename: Test release
+name: Test release
 on:
   push:
     branches:
