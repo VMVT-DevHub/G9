@@ -239,6 +239,10 @@ public class ValidVirsijimas {
 	public DateOnly Nuo { get; set; }
 	/// <summary></summary>
 	public DateOnly Iki { get; set; }
+	/// <summary>Maksimali viršyjimo reikšmė laikotarpiui</summary>
+	public double Max { get; set; }
+	/// <summary>Patvirtinimui reikalinga suvesti papildomą informaciją</summary>
+	public bool Detales { get; set; }
 	/// <summary>Nereikšmingas viršijimas</summary>
 	public bool? Nereiksmingas { get; set; }
 	/// <summary>Nereikšmingo viršijimo pagrindimas</summary>
@@ -253,6 +257,8 @@ public class ValidVirsijimas {
 	public string? LOQVerte { get; set; }
 	/// <summary>Stebėjimo statusas</summary>
 	public string? Statusas { get; set; }
+	/// <summary>Neatitikimas patvirtintas</summary>
+	public bool Patvirtinta { get; set; }
 	/// <summary>Pastabos</summary>
 	public string? Pastabos { get; set; }
 }
@@ -299,7 +305,9 @@ public class DeklarValidVirsijimas{
 	public string? LOQVerte { get; set; }
 	/// <summary>Stebėjimo statusas</summary>
 	public string? Statusas { get; set; }
-	/// <summary>Pastabos</summary>
+	/// <summary></summary>
+	public bool Patvirtinta { get; set; }
+	/// <summary></summary>
 	public string? Pastabos { get; set; }
 }
 
